@@ -44,14 +44,17 @@ document.addEventListener("DOMContentLoaded", () => {
         <h5 class="card-title">${photo.photographer}</h5>
         <p class="card-text">${photo.id}</p>
         <a href="#" class="btn btn-primary view-image" data-id="${photo.id}" data-src="${photo.src.large}">View</a>
-        <a href="#" class="btn btn-secondary hide-card">Hide</a>
+        <a href="#" id="hide" class="btn btn-secondary hide-card">Hide</a>
       </div>`;
 
       gallery.appendChild(card);
     });
   };
-  const hidebtn = document.getElementsByClassName("hide-card");
-  const card = document.getElementById("card");
-  hidebtn.addEventListener("click", (event) => {});
-  card.remove();
+  document.getElementById("gallery").addEventListener("click", (event) => {
+    if (event.target.classList.contains("hide-card")) {
+      event.preventDefault();
+      const cardToHide = event.target.closest(".card");
+      cardToHide.remove();
+    }
+  });
 });
