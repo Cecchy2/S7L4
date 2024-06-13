@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .catch((error) => console.log("Error:", error));
   };
+
   const creaImmagini = (photos) => {
     const gallery = document.getElementById("gallery");
     gallery.innerHTML = "";
@@ -35,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     photos.forEach((photo) => {
       const card = document.createElement("div");
       card.className = "col-4 card mb-4 me-3shadow-sm";
+      card.id = "card";
 
       card.innerHTML = `
       <img src="${photo.src.medium}" alt="${photo.photographer}" class="card-img-top">
@@ -43,9 +45,13 @@ document.addEventListener("DOMContentLoaded", () => {
         <p class="card-text">${photo.id}</p>
         <a href="#" class="btn btn-primary view-image" data-id="${photo.id}" data-src="${photo.src.large}">View</a>
         <a href="#" class="btn btn-secondary hide-card">Hide</a>
-      </div>
-    `;
+      </div>`;
+
       gallery.appendChild(card);
     });
   };
+  const hidebtn = document.getElementsByClassName("hide-card");
+  const card = document.getElementById("card");
+  hidebtn.addEventListener("click", (event) => {});
+  card.remove();
 });
